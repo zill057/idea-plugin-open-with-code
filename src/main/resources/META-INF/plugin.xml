@@ -8,7 +8,8 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.zill057.ideapluginopenwithcode.services.MyApplicationService"/>
+        <applicationService
+                serviceImplementation="com.github.zill057.ideapluginopenwithcode.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.zill057.ideapluginopenwithcode.services.MyProjectService"/>
     </extensions>
 
@@ -16,4 +17,15 @@
         <listener class="com.github.zill057.ideapluginopenwithcode.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </projectListeners>
+
+    <actions>
+        <action id="com.github.zill057.ideapluginopenwithcode.actions.TextSelectedAction"
+                class="com.github.zill057.ideapluginopenwithcode.actions.TextSelectedAction"
+                text="Open with Code"
+                description="Open current file with VSCode"
+                icon="Icons.PLUGIN_ICON">
+            <add-to-group group-id="RunContextPopupGroup" anchor="before"
+                          relative-to-action="OpenInBrowserGroup"/>
+        </action>
+    </actions>
 </idea-plugin>
